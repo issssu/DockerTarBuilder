@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       docker_images:
-        description: '请填写docker镜像名称 多个用英文逗号分开'
+        description: '请填写docker镜像名称 多个用英文逗号分开 例如: ghcr.io/qwertyjack/claude-code@sha256:cb0c5b362ce7e1f5c8d280b6f747f6f70921b9272263c752f7f7baf55f030c10'
         required: true
         default: 'alpine:latest,busybox:stable-glibc'  # 设置默认的 Docker 镜像列表
 
