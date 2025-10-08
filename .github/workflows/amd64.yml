@@ -25,7 +25,8 @@ jobs:
         images="${{ github.event.inputs.docker_images }}"
           IFS=',' read -r -a image_array <<< "$images"
           for image in "${image_array[@]}"; do
-            docker pull "${image}" --platform "linux/amd64" --disable-content-trust=false
+            export DOCKER_CONTENT_TRUST=0
+            docker pull "${image}" --platform "linux/amd64" --disable-content-trust=true
             image_name="${image//\//_}"
             image_name="${image_name//:/_}"
             docker save "${image}" -o "${image_name}-amd64.tar"
