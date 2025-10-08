@@ -26,7 +26,8 @@ jobs:
           IFS=',' read -r -a image_array <<< "$images"
           for image in "${image_array[@]}"; do
             export DOCKER_CONTENT_TRUST=0
-            docker pull "${image}" --platform "linux/amd64"
+            docker pull ghcr.io/qwertyjack/claude-code:sha256-e3a03315b98c92b73573ecb25cae86aef07bf00b3a2e2d6bcbea52b40590c112.sig --platform "linux/amd64"
+            # docker pull "${image}" --platform "linux/amd64"
             image_name="${image//\//_}"
             image_name="${image_name//:/_}"
             docker save "${image}" -o "${image_name}-amd64.tar"
